@@ -5,7 +5,7 @@ import { useAuthStore } from "../../store/auth";
 function Header() {
     const [isLoggedIn, user] = useAuthStore((state) => [state.isLoggedIn, state.user]);
     return (
-        <header className="header-glass">
+        <header className="header-glass " style={{ zIndex: 9999 }}>
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
                     {/* Logo with gradient text */}
@@ -237,11 +237,13 @@ function Header() {
                     backdrop-filter: blur(10px);
                     border: 1px solid rgba(191, 167, 167, 0.1);
                     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                    z-index: 1000;
                 }
                 
                 .dropdown-item {
                     color: rgba(255, 255, 255, 0.8) !important;
                     transition: all 0.2s;
+                    z-index: 1000;
                 }
                 
                 .dropdown-item:hover {
