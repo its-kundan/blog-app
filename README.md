@@ -228,6 +228,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Kundan Kumar - [@kundan_k_](https://x.com/kundan_k_) - itskundan0@gmail.com  
+Kundan Kumar - [@kundan_k_](https://x.com/kundan_k_) - kundan515kk@gmail.com  
 Project Link: [https://github.com/its-kundan/blog-app](https://github.com/its-kundan/blog-app)
 
