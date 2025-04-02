@@ -1,7 +1,7 @@
 # Blog Application - Full Stack (React + Django + MongoDB)
 
-![Blog App Screenshot](screenshot.png)  
-[*Replace with an actual screenshot*]
+![Blog App Screenshot](blog.png)  
+
 
 ## Table of Contents
 - [Blog Application - Full Stack (React + Django + MongoDB)](#blog-application---full-stack-react--django--mongodb)
