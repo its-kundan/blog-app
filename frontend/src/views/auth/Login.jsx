@@ -13,6 +13,12 @@ function Login() {
     const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
     const navigate = useNavigate();
 
+    // Admin credentials (in a real app, these should be more secure)
+    const ADMIN_CREDENTIALS = {
+        email: "kundan515kk@gmail.com",
+        password: "12345678" // Strong password recommended
+    };
+
     const handleBioDataChange = (event) => {
         setBioData({
             ...bioData,
@@ -31,15 +37,33 @@ function Login() {
         e.preventDefault();
         setIsLoading(true);
 
-        const { error } = await login(bioData.email, bioData.password);
-        if (error) {
-            alert(JSON.stringify(error));
-            resetForm();
+        // Check if it's the admin trying to login
+        if (bioData.email === ADMIN_CREDENTIALS.email && bioData.password === ADMIN_CREDENTIALS.password) {
+            // Admin login logic
+            try {
+                // Store admin login state in your auth store
+                useAuthStore.getState().setUser({
+                    email: ADMIN_CREDENTIALS.email,
+                    isAdmin: true
+                });
+                
+                // Navigate to admin dashboard or home page
+                navigate("/admin-dashboard"); // or "/" if you prefer
+            } catch (error) {
+                alert("Admin login failed");
+                resetForm();
+            }
         } else {
-            navigate("/");
+            // Regular user login
+            const { error } = await login(bioData.email, bioData.password);
+            if (error) {
+                alert(JSON.stringify(error));
+                resetForm();
+            } else {
+                navigate("/");
+            }
         }
 
-        // Reset isLoading to false when the operation is complete
         setIsLoading(false);
     };
 
@@ -54,7 +78,7 @@ function Login() {
                                 <div className="mb-4">
                                     <h1 className="mb-1 fw-bold">Sign in</h1>
                                     <span>
-                                        Don’t have an account?
+                                        Don't have an account?
                                         <Link to="/register/" className="ms-1">
                                             Sign up
                                         </Link>
